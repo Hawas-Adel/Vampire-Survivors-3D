@@ -35,6 +35,42 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Cast Skill 1"",
+                    ""type"": ""Button"",
+                    ""id"": ""4d09e53c-e24b-4438-a936-384804992314"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Cast Skill 2"",
+                    ""type"": ""Button"",
+                    ""id"": ""76387dfb-f47c-4855-a709-ce5be13105f6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Cast Skill 3"",
+                    ""type"": ""Button"",
+                    ""id"": ""61199924-45fa-48c2-85c9-b0741297d4d7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Cast Skill 4"",
+                    ""type"": ""Button"",
+                    ""id"": ""f67749f4-6920-44f0-b481-a4f8439dd7a7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -92,6 +128,50 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d55b2051-1478-4f0d-9893-7624ec6196f9"",
+                    ""path"": ""<Pointer>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cast Skill 1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0a86b35f-b5db-4027-ba69-1313baf5c9fb"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cast Skill 2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""69da9406-dfb5-46c6-8d0b-f0f160babae4"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cast Skill 3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4528607a-2f7b-4053-83ed-7f361f779e7d"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cast Skill 4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -101,6 +181,10 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         // Gameplay
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_Movement = m_Gameplay.FindAction("Movement", throwIfNotFound: true);
+        m_Gameplay_CastSkill1 = m_Gameplay.FindAction("Cast Skill 1", throwIfNotFound: true);
+        m_Gameplay_CastSkill2 = m_Gameplay.FindAction("Cast Skill 2", throwIfNotFound: true);
+        m_Gameplay_CastSkill3 = m_Gameplay.FindAction("Cast Skill 3", throwIfNotFound: true);
+        m_Gameplay_CastSkill4 = m_Gameplay.FindAction("Cast Skill 4", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -163,11 +247,19 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Gameplay;
     private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
     private readonly InputAction m_Gameplay_Movement;
+    private readonly InputAction m_Gameplay_CastSkill1;
+    private readonly InputAction m_Gameplay_CastSkill2;
+    private readonly InputAction m_Gameplay_CastSkill3;
+    private readonly InputAction m_Gameplay_CastSkill4;
     public struct GameplayActions
     {
         private @GameControls m_Wrapper;
         public GameplayActions(@GameControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Gameplay_Movement;
+        public InputAction @CastSkill1 => m_Wrapper.m_Gameplay_CastSkill1;
+        public InputAction @CastSkill2 => m_Wrapper.m_Gameplay_CastSkill2;
+        public InputAction @CastSkill3 => m_Wrapper.m_Gameplay_CastSkill3;
+        public InputAction @CastSkill4 => m_Wrapper.m_Gameplay_CastSkill4;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -180,6 +272,18 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
+            @CastSkill1.started += instance.OnCastSkill1;
+            @CastSkill1.performed += instance.OnCastSkill1;
+            @CastSkill1.canceled += instance.OnCastSkill1;
+            @CastSkill2.started += instance.OnCastSkill2;
+            @CastSkill2.performed += instance.OnCastSkill2;
+            @CastSkill2.canceled += instance.OnCastSkill2;
+            @CastSkill3.started += instance.OnCastSkill3;
+            @CastSkill3.performed += instance.OnCastSkill3;
+            @CastSkill3.canceled += instance.OnCastSkill3;
+            @CastSkill4.started += instance.OnCastSkill4;
+            @CastSkill4.performed += instance.OnCastSkill4;
+            @CastSkill4.canceled += instance.OnCastSkill4;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -187,6 +291,18 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
+            @CastSkill1.started -= instance.OnCastSkill1;
+            @CastSkill1.performed -= instance.OnCastSkill1;
+            @CastSkill1.canceled -= instance.OnCastSkill1;
+            @CastSkill2.started -= instance.OnCastSkill2;
+            @CastSkill2.performed -= instance.OnCastSkill2;
+            @CastSkill2.canceled -= instance.OnCastSkill2;
+            @CastSkill3.started -= instance.OnCastSkill3;
+            @CastSkill3.performed -= instance.OnCastSkill3;
+            @CastSkill3.canceled -= instance.OnCastSkill3;
+            @CastSkill4.started -= instance.OnCastSkill4;
+            @CastSkill4.performed -= instance.OnCastSkill4;
+            @CastSkill4.canceled -= instance.OnCastSkill4;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -207,5 +323,9 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
     public interface IGameplayActions
     {
         void OnMovement(InputAction.CallbackContext context);
+        void OnCastSkill1(InputAction.CallbackContext context);
+        void OnCastSkill2(InputAction.CallbackContext context);
+        void OnCastSkill3(InputAction.CallbackContext context);
+        void OnCastSkill4(InputAction.CallbackContext context);
     }
 }

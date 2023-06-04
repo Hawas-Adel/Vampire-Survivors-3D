@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4353886837982088015}
   - component: {fileID: 4346372600474236308}
   - component: {fileID: 4563306031872482871}
+  - component: {fileID: 2003822805250941322}
   m_Layer: 0
   m_Name: '[Player]'
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 5759843136317842777}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &4346372600474236308
 Rigidbody:
@@ -75,6 +76,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MovementSpeed: 5
   RotationSpeed: 10
+--- !u!114 &2003822805250941322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4356619368664340316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1b1270c4482af34dacabec0fa9d89ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Skills:
+  - {fileID: 11400000, guid: a6d53dead668938429dfe65c1e55235e, type: 2}
 --- !u!1 &7338775402585290034
 GameObject:
   m_ObjectHideFlags: 0

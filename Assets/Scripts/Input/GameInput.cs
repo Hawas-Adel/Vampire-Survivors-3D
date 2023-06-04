@@ -4,7 +4,6 @@ public class GameInput
 {
 	private GameControls GameControls;
 
-
 	public Vector2 MovementInput => GameControls.Gameplay.Movement.ReadValue<Vector2>();
 	public Vector3 MovementInputXZ
 	{
@@ -15,12 +14,23 @@ public class GameInput
 		}
 	}
 
+	public event System.Action<int> OnPlayerSkillCastInput;
+
 	public GameInput()
 	{
 		GameControls = new GameControls();
+		AddSkillCastingListners();
 		EnableGamePlayControls();
 	}
 
-	private void EnableGamePlayControls() => GameControls.Gameplay.Enable();
-	private void DisableGamePlayControls() => GameControls.Gameplay.Disable();
+	public void EnableGamePlayControls() => GameControls.Gameplay.Enable();
+	public void DisableGamePlayControls() => GameControls.Gameplay.Disable();
+
+	private void AddSkillCastingListners()
+	{
+		GameControls.Gameplay.CastSkill1.performed += _ => OnPlayerSkillCastInput?.Invoke(0);
+		GameControls.Gameplay.CastSkill2.performed += _ => OnPlayerSkillCastInput?.Invoke(1);
+		GameControls.Gameplay.CastSkill3.performed += _ => OnPlayerSkillCastInput?.Invoke(2);
+		GameControls.Gameplay.CastSkill4.performed += _ => OnPlayerSkillCastInput?.Invoke(3);
+	}
 }
