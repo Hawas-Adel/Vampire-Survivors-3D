@@ -14,7 +14,7 @@ public class PlayerAim : MonoBehaviour
 	private void FixedUpdate()
 	{
 		pointerWorldPosition = GetPointerWorldPosition();
-		rigidbody.MoveRotation(Quaternion.Slerp(rigidbody.rotation, Quaternion.LookRotation(pointerWorldPosition - rigidbody.position, rigidbody.transform.up), RotationSpeed * Time.fixedDeltaTime));
+		SetAimRotation(Quaternion.Slerp(rigidbody.rotation, Quaternion.LookRotation(pointerWorldPosition - rigidbody.position, rigidbody.transform.up), RotationSpeed * Time.fixedDeltaTime));
 	}
 
 	private Vector3 GetPointerWorldPosition()
@@ -24,4 +24,6 @@ public class PlayerAim : MonoBehaviour
 		plane.Raycast(pointerCameraRay, out float hitDistance);
 		return pointerCameraRay.GetPoint(hitDistance);
 	}
+
+	public void SetAimRotation(Quaternion rotation) => rigidbody.MoveRotation(rotation);
 }
