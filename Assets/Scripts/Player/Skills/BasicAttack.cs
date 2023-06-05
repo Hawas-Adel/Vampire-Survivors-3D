@@ -9,7 +9,7 @@ public class BasicAttack : Skill
 
 	public override (float normalizedDelay, Action<SkillManager, Vector3> action)[] SkillCastCallbacks { get; }
 
-	public BasicAttack()
+	public BasicAttack() : base()
 	{
 		SkillCastCallbacks = new (float normalizedDelay, Action<SkillManager, Vector3> action)[]
 		{

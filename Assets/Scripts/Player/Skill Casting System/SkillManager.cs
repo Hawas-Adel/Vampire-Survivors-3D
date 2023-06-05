@@ -24,7 +24,7 @@ public class SkillManager : MonoBehaviour
 			return;
 		}
 
-		if (!CanCast())
+		if (!CanCast() || !skill.CanCast(this))
 		{
 			return;
 		}
@@ -44,6 +44,7 @@ public class SkillManager : MonoBehaviour
 		}
 
 		this.DelayedCallBack(ResetSelf, skill.CastDuration);
+		this.DelayedCallBack(skill.StartChargeCooldown, skill.CastDuration);
 	}
 
 	private void ResetSelf()
