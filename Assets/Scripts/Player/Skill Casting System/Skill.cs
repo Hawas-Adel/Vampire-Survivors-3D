@@ -9,7 +9,7 @@ public abstract class Skill : ScriptableObject
 
 	private (float cooldownStartTimeStamp, float cooldownEndTimeStamp)[] chargeUsableTimes;
 
-	public Skill() => chargeUsableTimes = new (float cooldownStartTimeStamp, float cooldownEndTimeStamp)[MaxCharges];
+	private void OnEnable() => chargeUsableTimes = new (float cooldownStartTimeStamp, float cooldownEndTimeStamp)[MaxCharges];
 
 	public abstract (float normalizedDelay, System.Action<SkillManager, Vector3> action)[] SkillCastCallbacks { get; }
 
