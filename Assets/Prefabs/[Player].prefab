@@ -34,7 +34,7 @@ Transform:
   m_Children:
   - {fileID: 5759843136317842777}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &4346372600474236308
 Rigidbody:
@@ -76,7 +76,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementSpeed: 5
-  RotationSpeed: 10
 --- !u!114 &6122003384866353771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,6 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d50b3f1641bec246a88160337c0ca41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RotationSpeed: 10
 --- !u!114 &2003822805250941322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,6 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Skills:
   - {fileID: 11400000, guid: a6d53dead668938429dfe65c1e55235e, type: 2}
+  - {fileID: 11400000, guid: d9883eae155ba64409d385d355296ac9, type: 2}
 --- !u!1 &7338775402585290034
 GameObject:
   m_ObjectHideFlags: 0

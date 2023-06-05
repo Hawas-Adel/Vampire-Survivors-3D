@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09eab2a834b7ee84593178bc4e98f417, type: 3}
-  m_Name: New Debug Skill
+  m_Name: Debug Skill
   m_EditorClassIdentifier: 
   <CastDuration>k__BackingField: 1
   <Cooldown>k__BackingField: 1
