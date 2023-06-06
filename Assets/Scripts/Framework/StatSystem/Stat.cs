@@ -44,7 +44,7 @@ public class Stat
 
 	public float Value => (BaseValue * IncreasedValue) + BonusValue;
 
-	public void Initialize(string ID, float baseValue)
+	public virtual void Initialize(string ID, float baseValue)
 	{
 		this.ID = ID;
 		BaseValue = baseValue;
