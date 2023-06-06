@@ -15,5 +15,5 @@ MonoBehaviour:
   <CastDuration>k__BackingField: 1
   <Cooldown>k__BackingField: 1
   <MaxCharges>k__BackingField: 1
-  <Range>k__BackingField: 4
+  <Range>k__BackingField: 2.5
   <AttackVerticalOffset>k__BackingField: 1.5

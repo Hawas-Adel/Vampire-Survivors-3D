@@ -6,10 +6,16 @@ public class SkillManager : MonoBehaviour
 {
 	public List<Skill> Skills;
 
-	private PlayerAim playerAim;
-	private List<Coroutine> CurrentCastingCoroutines = new();
+	public ITargetable TargetableREF { get; private set; }
 
-	private void Awake() => playerAim = GetComponent<PlayerAim>();
+	private PlayerAim playerAim;
+	private readonly List<Coroutine> CurrentCastingCoroutines = new();
+
+	private void Awake()
+	{
+		TargetableREF = GetComponent<ITargetable>();
+		playerAim = GetComponent<PlayerAim>();
+	}
 
 	private void OnEnable() => GameManager.Instance.GameInput.OnPlayerSkillCastInput += TryCastSkill;
 	private void OnDisable() => GameManager.Instance.GameInput.OnPlayerSkillCastInput -= TryCastSkill;

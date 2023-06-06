@@ -21,17 +21,22 @@ public class BasicAttack : Skill
 	{
 		Vector3 attackCenter = GetPointInCastDirection(caster, targetPoint, Range / 2f);
 		attackCenter += AttackVerticalOffset * Vector3.up;
-		foreach (var item in Physics.OverlapSphere(attackCenter, Range / 2f))
+		foreach (var item in TargetingUtilities.GetTargetableEntities(Physics.OverlapSphere(attackCenter, Range / 2f), caster.TargetableREF))
 		{
-			Debug.Log(item, item);
+			DealDamageTo(item);
 		}
 
-		#region Visuals
+		SpawnVFX(attackCenter);
+	}
+
+	private void DealDamageTo(ITargetable item) => Debug.Log(item, item as UnityEngine.Object);
+
+	private void SpawnVFX(Vector3 attackCenter)
+	{
 		Transform sphereVisual = GameObject.CreatePrimitive(PrimitiveType.Sphere).transform;
 		Destroy(sphereVisual.GetComponent<Collider>());
 		sphereVisual.position = attackCenter;
-		sphereVisual.localScale = Range / 2f * Vector3.one;
+		sphereVisual.localScale = Range * Vector3.one;
 		Destroy(sphereVisual.gameObject, 0.1f);
-		#endregion
 	}
 }
