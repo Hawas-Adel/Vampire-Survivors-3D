@@ -6,14 +6,14 @@ public class SkillManager : MonoBehaviour
 {
 	public List<Skill> Skills;
 
-	public ITargetable TargetableREF { get; private set; }
+	public ICaster Caster { get; private set; }
 
 	private PlayerAim playerAim;
 	private readonly List<Coroutine> CurrentCastingCoroutines = new();
 
 	private void Awake()
 	{
-		TargetableREF = GetComponent<ITargetable>();
+		Caster = GetComponent<ICaster>();
 		playerAim = GetComponent<PlayerAim>();
 	}
 
@@ -30,7 +30,7 @@ public class SkillManager : MonoBehaviour
 			return;
 		}
 
-		if (!CanCast() || !skill.CanCast(this))
+		if (!CanCast() || !skill.CanCast(Caster))
 		{
 			return;
 		}
@@ -46,7 +46,7 @@ public class SkillManager : MonoBehaviour
 		playerAim.SetAimRotation(Quaternion.LookRotation(playerAim.pointerWorldPosition - playerAim.transform.position, playerAim.transform.up));
 		foreach (var (normalizedDelay, action) in skill.SkillCastCallbacks)
 		{
-			CurrentCastingCoroutines.Add(this.DelayedCallBack(() => action.Invoke(this, playerAim.pointerWorldPosition), normalizedDelay * skill.CastDuration));
+			CurrentCastingCoroutines.Add(this.DelayedCallBack(() => action.Invoke(Caster, playerAim.pointerWorldPosition), normalizedDelay * skill.CastDuration));
 		}
 
 		this.DelayedCallBack(ResetSelf, skill.CastDuration);

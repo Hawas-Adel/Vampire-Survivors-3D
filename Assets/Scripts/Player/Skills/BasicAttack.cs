@@ -7,21 +7,21 @@ public class BasicAttack : Skill
 	[field: SerializeField, Min(0f)] public float Range { get; private set; } = 1.5f;
 	[field: SerializeField, Min(0f)] public float AttackVerticalOffset { get; private set; } = 1.5f;
 
-	public override (float normalizedDelay, Action<SkillManager, Vector3> action)[] SkillCastCallbacks { get; }
+	public override (float normalizedDelay, Action<ICaster, Vector3> action)[] SkillCastCallbacks { get; }
 
 	public BasicAttack() : base()
 	{
-		SkillCastCallbacks = new (float normalizedDelay, Action<SkillManager, Vector3> action)[]
+		SkillCastCallbacks = new (float normalizedDelay, Action<ICaster, Vector3> action)[]
 		{
 			(0.5f, PerformAttack),
 		};
 	}
 
-	private void PerformAttack(SkillManager caster, Vector3 targetPoint)
+	private void PerformAttack(ICaster caster, Vector3 targetPoint)
 	{
 		Vector3 attackCenter = GetPointInCastDirection(caster, targetPoint, Range / 2f);
 		attackCenter += AttackVerticalOffset * Vector3.up;
-		foreach (var item in TargetingUtilities.GetTargetableEntities(Physics.OverlapSphere(attackCenter, Range / 2f), caster.TargetableREF))
+		foreach (var item in TargetingUtilities.GetTargetableEntities(Physics.OverlapSphere(attackCenter, Range / 2f), caster))
 		{
 			DealDamageTo(item);
 		}

@@ -11,9 +11,9 @@ public abstract class Skill : ScriptableObject
 
 	private void OnEnable() => chargeUsableTimes = new (float cooldownStartTimeStamp, float cooldownEndTimeStamp)[MaxCharges];
 
-	public abstract (float normalizedDelay, System.Action<SkillManager, Vector3> action)[] SkillCastCallbacks { get; }
+	public abstract (float normalizedDelay, System.Action<ICaster, Vector3> action)[] SkillCastCallbacks { get; }
 
-	public bool CanCast(SkillManager caster) => HasAvailableCharge();
+	public bool CanCast(ICaster caster) => HasAvailableCharge();
 
 	public bool HasAvailableCharge() => chargeUsableTimes.Any(chargeTime => chargeTime.cooldownEndTimeStamp <= Time.time);
 
@@ -24,10 +24,10 @@ public abstract class Skill : ScriptableObject
 		chargeUsableTimes[chargeIndex] = (Time.time, Time.time + Cooldown);
 	}
 
-	protected static Vector3 GetCastDirection(SkillManager caster, Vector3 targetPoint) => (targetPoint - caster.transform.position).normalized;
-	protected static Vector3 GetPointInCastDirection(SkillManager caster, Vector3 targetPoint, float distance)
+	protected static Vector3 GetCastDirection(ICaster caster, Vector3 targetPoint) => (targetPoint - caster.Transform.position).normalized;
+	protected static Vector3 GetPointInCastDirection(ICaster caster, Vector3 targetPoint, float distance)
 	{
 		var dir = GetCastDirection(caster, targetPoint);
-		return caster.transform.position + (dir * distance);
+		return caster.Transform.position + (dir * distance);
 	}
 }
