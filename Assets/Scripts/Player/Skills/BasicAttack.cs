@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Skills/Basic Attack")]
 public class BasicAttack : Skill
 {
-	[field: SerializeField, Min(0f)] public float Range { get; private set; } = 1.5f;
+	[field: SerializeField, Min(0f), Space] public float Range { get; private set; } = 1.5f;
 	[field: SerializeField, Min(0f)] public float AttackVerticalOffset { get; private set; } = 1.5f;
 
 	public override (float normalizedDelay, Action<ICaster, Vector3> action)[] SkillCastCallbacks { get; }
