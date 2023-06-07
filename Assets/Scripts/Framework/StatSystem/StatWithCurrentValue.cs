@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class StatWithCurrentValue : Stat
 {
-	public float MaxValue => Mathf.Max(0f, Value);
+	public float MaxValue => Mathf.Max(0f, GetValue());
 
 	public float CurrentValue { get; private set; }
 	public float CurrentValue01 => CurrentValue / MaxValue;

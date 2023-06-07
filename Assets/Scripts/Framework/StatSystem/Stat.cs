@@ -21,12 +21,12 @@ public class Stat
 	public float IncreasedValue { get; private set; } = 1f;
 	public void ApplyIncreasedValueModifier(float value)
 	{
-		IncreasedValue *= value;
+		IncreasedValue += value;
 		OnValueChanged?.Invoke();
 	}
 	public void RemoveIncreasedValueModifier(float value)
 	{
-		IncreasedValue /= value;
+		IncreasedValue -= value;
 		OnValueChanged?.Invoke();
 	}
 
@@ -42,7 +42,7 @@ public class Stat
 		OnValueChanged?.Invoke();
 	}
 
-	public float Value => (BaseValue * IncreasedValue) + BonusValue;
+	public float GetValue(float additionalBaseValue = 0f, float additionalIncreasedValue = 0f, float additionalBonusValue = 0f) => ((BaseValue + additionalBaseValue) * (IncreasedValue + additionalIncreasedValue)) + (BonusValue + additionalBonusValue);
 
 	public virtual void Initialize(string ID, float baseValue)
 	{
