@@ -30,4 +30,6 @@ public abstract class UIList<T> : MonoBehaviour
 
 		GeneratedUIElements = newElements.AsReadOnly();
 	}
+
+	public bool IsBoundToAValue() => BoundValues is null;
 }
