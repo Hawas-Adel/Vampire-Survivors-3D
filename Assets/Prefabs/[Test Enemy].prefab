@@ -45,6 +45,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d50fd263f86aa714cbf146fbc2d372df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxHealth: 1000
+  HealthRegen: 5
+  MaxMana: 500
+  ManaRegen: 10
+  MovementSpeed: 5
+  Armor: 0
+  CriticalChance: 0
+  LifeSteal: 0
 --- !u!1 &5104847770210558167
 GameObject:
   m_ObjectHideFlags: 0

@@ -35,7 +35,7 @@ Transform:
   m_Children:
   - {fileID: 5759843136317842777}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1077347599769454679
 MonoBehaviour:
@@ -49,6 +49,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62a41f70d31f4994cbddb38e0a4e85d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxHealth: 1000
+  HealthRegen: 5
+  MaxMana: 500
+  ManaRegen: 10
+  Strength: 0
+  Dexterity: 0
+  Intelligence: 0
+  MovementSpeed: 5
+  Armor: 0
+  CriticalChance: 0
+  LifeSteal: 0
 --- !u!54 &4346372600474236308
 Rigidbody:
   m_ObjectHideFlags: 0

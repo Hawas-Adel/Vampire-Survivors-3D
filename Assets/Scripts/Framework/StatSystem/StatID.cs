@@ -10,11 +10,8 @@ public static class StatID
 	public const string _Intelligence = nameof(_Intelligence);
 
 	public const string _Movement_Speed = nameof(_Movement_Speed);
-	public const string _Attack_Speed = nameof(_Attack_Speed);
+
 	public const string _Casting_Speed = nameof(_Casting_Speed);
-
-	public const string _Armor = nameof(_Armor);
-
 	public const string _Mana_Cost = nameof(_Mana_Cost);
 	public const string _Cooldown = nameof(_Cooldown);
 	public const string _Range = nameof(_Range);
@@ -23,6 +20,7 @@ public static class StatID
 	public const string _Duration = nameof(_Duration);
 
 	public const string _Damage = nameof(_Damage);
+	public const string _Armor = nameof(_Armor);
 
 	public const string _Projectile_Count = nameof(_Projectile_Count);
 	public const string _Projectile_Speed = nameof(_Projectile_Speed);
