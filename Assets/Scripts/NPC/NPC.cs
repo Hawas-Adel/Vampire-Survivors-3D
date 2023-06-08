@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class NPC : MonoBehaviour, IStatsHolder, ITargetable
+public class NPC : MonoBehaviour, IEntity
 {
 	[SerializeField, Min(0f), Header("Stats")] private float MaxHealth = 1000f;
 	[SerializeField, Min(0f)] private float HealthRegen = 5f;
