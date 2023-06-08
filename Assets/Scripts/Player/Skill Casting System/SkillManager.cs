@@ -22,7 +22,7 @@ public class SkillManager : MonoBehaviour
 
 	private void TryCastSkill(int skillIndex)
 	{
-		Debug.Log($"Attemting to cast Skill at Index {skillIndex}");
+		Debug.Log($"Attempting to cast Skill at Index {skillIndex}");
 
 		Skill skill = Skills.ElementAtOrDefault(skillIndex);
 		if (skill == null)
