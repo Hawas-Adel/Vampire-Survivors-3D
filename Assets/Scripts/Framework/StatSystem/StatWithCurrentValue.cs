@@ -7,12 +7,18 @@ public class StatWithCurrentValue : Stat
 	public float CurrentValue { get; private set; }
 	public float CurrentValue01 => CurrentValue / MaxValue;
 
-	public event System.Action OnCurrentValueChanged;
+	public event System.Action<StatWithCurrentValue> OnCurrentValueChanged;
 
 	public void ModifyCurrentValue(float modValue)
 	{
-		CurrentValue += modValue;
-		ReCalibrateCurrentValue();
+		float newCurrentValue = Mathf.Clamp(CurrentValue + modValue, 0f, MaxValue);
+		if (newCurrentValue == CurrentValue)
+		{
+			return;
+		}
+
+		CurrentValue = newCurrentValue;
+		ReCalibrateCurrentValue(this);
 	}
 
 	public override void Initialize(string ID, float baseValue)
@@ -22,9 +28,9 @@ public class StatWithCurrentValue : Stat
 		OnValueChanged += ReCalibrateCurrentValue;
 	}
 
-	private void ReCalibrateCurrentValue()
+	private void ReCalibrateCurrentValue(Stat _)
 	{
 		CurrentValue = Mathf.Clamp(CurrentValue, 0f, MaxValue);
-		OnCurrentValueChanged?.Invoke();
+		OnCurrentValueChanged?.Invoke(this);
 	}
 }
