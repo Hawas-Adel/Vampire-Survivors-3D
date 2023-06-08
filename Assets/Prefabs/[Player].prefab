@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4353886837982088015}
-  - component: {fileID: 1077347599769454679}
   - component: {fileID: 4346372600474236308}
+  - component: {fileID: 1077347599769454679}
+  - component: {fileID: 7649679977178344835}
   - component: {fileID: 4563306031872482871}
   - component: {fileID: 6122003384866353771}
   - component: {fileID: 2003822805250941322}
@@ -37,29 +38,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1077347599769454679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4356619368664340316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62a41f70d31f4994cbddb38e0a4e85d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxHealth: 1000
-  HealthRegen: 5
-  MaxMana: 500
-  ManaRegen: 10
-  Strength: 0
-  Dexterity: 0
-  Intelligence: 0
-  MovementSpeed: 5
-  Armor: 0
-  CriticalChance: 0
-  LifeSteal: 0
 --- !u!54 &4346372600474236308
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -87,6 +65,42 @@ Rigidbody:
   m_Interpolate: 2
   m_Constraints: 112
   m_CollisionDetection: 1
+--- !u!114 &1077347599769454679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4356619368664340316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62a41f70d31f4994cbddb38e0a4e85d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 1000
+  HealthRegen: 5
+  MaxMana: 500
+  ManaRegen: 10
+  Strength: 0
+  Dexterity: 0
+  Intelligence: 0
+  MovementSpeed: 5
+  Armor: 0
+  CriticalChance: 0
+  LifeSteal: 0
+--- !u!114 &7649679977178344835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4356619368664340316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 118a6ee6b8a9cf14e932221d6d1d21c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RegenTickTime: 0.25
 --- !u!114 &4563306031872482871
 MonoBehaviour:
   m_ObjectHideFlags: 0

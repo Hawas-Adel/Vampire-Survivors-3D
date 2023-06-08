@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3269334336080273325}
   - component: {fileID: 1749877080479887797}
+  - component: {fileID: 2736450425020454404}
   m_Layer: 0
   m_Name: '[Test Enemy]'
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   m_Children:
   - {fileID: 2201230306784760211}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1749877080479887797
 MonoBehaviour:
@@ -53,6 +54,19 @@ MonoBehaviour:
   Armor: 0
   CriticalChance: 0
   LifeSteal: 0
+--- !u!114 &2736450425020454404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4880233426290204094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 118a6ee6b8a9cf14e932221d6d1d21c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RegenTickTime: 0.25
 --- !u!1 &5104847770210558167
 GameObject:
   m_ObjectHideFlags: 0
