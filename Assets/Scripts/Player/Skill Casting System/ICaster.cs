@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface ICaster : ITargetable
+public interface ICaster : ITargetable, IStatsHolder
 {
 	public Transform Transform { get; }
 }

@@ -5,6 +5,7 @@ public abstract class Skill : ScriptableObject
 {
 	[field: SerializeField, Min(0f)] public float CastDuration { get; private set; } = 1f;
 	[field: SerializeField, Min(0f)] public float Cooldown { get; private set; } = 1f;
+	[field: SerializeField, Min(0f)] public float ManaCost { get; private set; } = 0f;
 	[field: SerializeField, Min(1)] public int MaxCharges { get; private set; } = 1;
 
 	private (float cooldownStartTimeStamp, float cooldownEndTimeStamp)[] chargeUsableTimes;
@@ -13,15 +14,20 @@ public abstract class Skill : ScriptableObject
 
 	public abstract (float normalizedDelay, System.Action<ICaster, Vector3> action)[] SkillCastCallbacks { get; }
 
-	public bool CanCast(ICaster caster) => HasAvailableCharge();
+	public bool CanCast(ICaster caster) => HasAvailableCharge() && HasEnoughMana(caster);
 
 	public bool HasAvailableCharge() => chargeUsableTimes.Any(chargeTime => chargeTime.cooldownEndTimeStamp <= Time.time);
+	private bool HasEnoughMana(ICaster caster)
+	{
+		float manaCost = caster.StatsHandler.GetStat<Stat>(StatID._Mana_Cost).GetValue(ManaCost);
+		return caster.StatsHandler.GetStat<StatWithCurrentValue>(StatID._Mana).CurrentValue >= manaCost;
+	}
 
-	public void StartChargeCooldown()
+	public void StartChargeCooldown(ICaster caster)
 	{
 		int chargeIndex = System.Array.FindIndex(chargeUsableTimes, chargeTime => chargeTime.cooldownEndTimeStamp <= Time.time);
 		float chargeCooldownStartTimeStamp = Mathf.Max(Time.time, chargeUsableTimes.Max(chargeTime => chargeTime.cooldownEndTimeStamp));
-		chargeUsableTimes[chargeIndex] = (Time.time, Time.time + Cooldown);
+		chargeUsableTimes[chargeIndex] = (Time.time, Time.time + caster.StatsHandler.GetStat<Stat>(StatID._Cooldown).GetValue(Cooldown));
 	}
 
 	protected static Vector3 GetCastDirection(ICaster caster, Vector3 targetPoint) => (targetPoint - caster.Transform.position).normalized;

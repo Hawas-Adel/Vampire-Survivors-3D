@@ -44,13 +44,16 @@ public class SkillManager : MonoBehaviour
 	{
 		playerAim.enabled = false;
 		playerAim.SetAimRotation(Quaternion.LookRotation(playerAim.pointerWorldPosition - playerAim.transform.position, playerAim.transform.up));
+
+		Caster.StatsHandler.GetStat<StatWithCurrentValue>(StatID._Mana).ModifyCurrentValue(-Caster.StatsHandler.GetStat<Stat>(StatID._Mana_Cost).GetValue(skill.ManaCost));
+		float castDuration = 1f / Caster.StatsHandler.GetStat<Stat>(StatID._Casting_Speed).GetValue(1f / skill.CastDuration);
 		foreach (var (normalizedDelay, action) in skill.SkillCastCallbacks)
 		{
-			CurrentCastingCoroutines.Add(this.DelayedCallBack(() => action.Invoke(Caster, playerAim.pointerWorldPosition), normalizedDelay * skill.CastDuration));
+			CurrentCastingCoroutines.Add(this.DelayedCallBack(() => action.Invoke(Caster, playerAim.pointerWorldPosition), normalizedDelay * castDuration));
 		}
 
-		this.DelayedCallBack(ResetSelf, skill.CastDuration);
-		this.DelayedCallBack(skill.StartChargeCooldown, skill.CastDuration);
+		this.DelayedCallBack(ResetSelf, castDuration);
+		this.DelayedCallBack(() => skill.StartChargeCooldown(Caster), castDuration);
 	}
 
 	private void ResetSelf()
