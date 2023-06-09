@@ -676,26 +676,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7697336025551026298, guid: ebc1539f2eab0494eab7071f6fa3fe42,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0.6901961
-      objectReference: {fileID: 0}
-    - target: {fileID: 7697336025551026298, guid: ebc1539f2eab0494eab7071f6fa3fe42,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7697336025551026298, guid: ebc1539f2eab0494eab7071f6fa3fe42,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7697336025551026298, guid: ebc1539f2eab0494eab7071f6fa3fe42,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -712,10 +692,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6819249662525939732}
-    - targetCorrespondingSourceObject: {fileID: 6547354602369097053, guid: ebc1539f2eab0494eab7071f6fa3fe42,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8799403744608255935}
     - targetCorrespondingSourceObject: {fileID: 6547354602369097053, guid: ebc1539f2eab0494eab7071f6fa3fe42,
         type: 3}
       insertIndex: -1
@@ -759,21 +735,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3138469166181119325}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8799403744608255935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8165858756446873600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 0.05, y: 0.05}
-  m_UseGraphicAlpha: 1
 --- !u!114 &1913208067772926345
 MonoBehaviour:
   m_ObjectHideFlags: 0
