@@ -5,6 +5,7 @@ using UnityEngine;
 public class BasicAttack : Skill
 {
 	[field: SerializeField, Min(0f), Space] public float Range { get; private set; } = 1.5f;
+	[field: SerializeField, Min(0f), Space] public float Damage { get; private set; } = 20f;
 	[field: SerializeField, Min(0f)] public float AttackVerticalOffset { get; private set; } = 1.5f;
 
 	public override (float normalizedDelay, Action<ICaster, Vector3> action)[] SkillCastCallbacks { get; }
@@ -19,24 +20,27 @@ public class BasicAttack : Skill
 
 	private void PerformAttack(ICaster caster, Vector3 targetPoint)
 	{
-		Vector3 attackCenter = GetPointInCastDirection(caster, targetPoint, Range / 2f);
+		float range = caster.StatsHandler.GetStat<Stat>(StatID._Range).GetValue(Range);
+		Vector3 attackCenter = GetPointInCastDirection(caster, targetPoint, range / 2f);
 		attackCenter += AttackVerticalOffset * Vector3.up;
-		foreach (var item in TargetingUtilities.GetTargetableEntities(Physics.OverlapSphere(attackCenter, Range / 2f), caster))
-		{
-			DealDamageTo(item);
-		}
-
-		SpawnVFX(attackCenter);
+		TargetingUtilities.GetTargetableEntities(Physics.OverlapSphere(attackCenter, range / 2f), caster).ApplyHitBehavior(targetable => DealDamage(caster, targetable));
+		SpawnVFX(attackCenter, range);
 	}
 
-	private void DealDamageTo(ITargetable item) => Debug.Log(item, item as UnityEngine.Object);
+	private void DealDamage(ICaster caster, ITargetable targetable)
+	{
+		if (targetable is IDamageable damageable)
+		{
+			damageable.TakeDamage(caster, Damage);
+		}
+	}
 
-	private void SpawnVFX(Vector3 attackCenter)
+	private void SpawnVFX(Vector3 attackCenter, float range)
 	{
 		Transform sphereVisual = GameObject.CreatePrimitive(PrimitiveType.Sphere).transform;
 		Destroy(sphereVisual.GetComponent<Collider>());
 		sphereVisual.position = attackCenter;
-		sphereVisual.localScale = Range * Vector3.one;
+		sphereVisual.localScale = range * Vector3.one;
 		Destroy(sphereVisual.gameObject, 0.1f);
 	}
 }

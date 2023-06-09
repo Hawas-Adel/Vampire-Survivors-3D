@@ -113,7 +113,7 @@ Transform:
   - {fileID: 5759843136317842777}
   - {fileID: 6547841220941425725}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &4346372600474236308
 Rigidbody:
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 1000
   HealthRegen: 5
-  MaxMana: 500
+  MaxMana: 100
   ManaRegen: 10
   Strength: 0
   Dexterity: 0
@@ -624,6 +624,11 @@ PrefabInstance:
     - target: {fileID: 2883784232746116154, guid: ebc1539f2eab0494eab7071f6fa3fe42,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7404760238921131890, guid: ebc1539f2eab0494eab7071f6fa3fe42,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

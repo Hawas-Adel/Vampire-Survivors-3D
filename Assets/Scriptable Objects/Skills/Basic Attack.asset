@@ -17,4 +17,5 @@ MonoBehaviour:
   <ManaCost>k__BackingField: 1
   <MaxCharges>k__BackingField: 1
   <Range>k__BackingField: 2.5
+  <Damage>k__BackingField: 200
   <AttackVerticalOffset>k__BackingField: 1.5

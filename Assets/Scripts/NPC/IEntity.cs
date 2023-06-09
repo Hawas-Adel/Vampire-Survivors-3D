@@ -1,1 +1,1 @@
-public interface IEntity : IStatsHolder, ITargetable { }
+public interface IEntity : IDamageable { }

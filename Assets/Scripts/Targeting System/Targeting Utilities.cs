@@ -15,4 +15,12 @@ public static class TargetingUtilities
 		Where(targetable1 => IgnoredTargetable.
 			Any(targetable2 => !AreAllies(targetable1, targetable2))).
 		ToArray();
+
+	public static void ApplyHitBehavior(this ITargetable[] targets, System.Action<ITargetable> onHitAction)
+	{
+		foreach (ITargetable item in targets)
+		{
+			item.ApplyHitBehavior(onHitAction);
+		}
+	}
 }

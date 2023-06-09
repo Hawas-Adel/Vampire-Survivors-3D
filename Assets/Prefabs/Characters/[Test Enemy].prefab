@@ -265,7 +265,7 @@ Transform:
   - {fileID: 2201230306784760211}
   - {fileID: 255393938616717671}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1749877080479887797
 MonoBehaviour:
@@ -279,9 +279,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d50fd263f86aa714cbf146fbc2d372df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 1000
+  MaxHealth: 200
   HealthRegen: 5
-  MaxMana: 500
+  MaxMana: 100
   ManaRegen: 10
   MovementSpeed: 5
   Armor: 0
@@ -674,6 +674,11 @@ PrefabInstance:
     - target: {fileID: 7288377921552153592, guid: ebc1539f2eab0494eab7071f6fa3fe42,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7404760238921131890, guid: ebc1539f2eab0494eab7071f6fa3fe42,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
