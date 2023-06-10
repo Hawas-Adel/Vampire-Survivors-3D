@@ -19,8 +19,8 @@ public class NPC : MonoBehaviour, IEntity
 	string ITargetable.TeamID { get; } = nameof(NPC);
 	Action<object> ITargetable.OnHit { get; }
 
-	Action<IDamageSource, float> IDamageable.OnDamageTaken { get; }
-	Action<IDamageable, float> IDamageSource.OnDamageDealt { get; }
+	Action<IDamageSource, float, bool> IDamageable.OnDamageTaken { get; }
+	Action<IDamageable, float, bool> IDamageSource.OnDamageDealt { get; }
 
 	private void Awake()
 	{

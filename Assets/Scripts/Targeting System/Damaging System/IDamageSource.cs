@@ -1,5 +1,5 @@
 public interface IDamageSource : IStatsHolder
 {
-	static System.Action<IDamageSource, IDamageable, float> OnGlobalDamageDealt { get; }
-	System.Action<IDamageable, float> OnDamageDealt { get; }
+	static System.Action<IDamageSource, IDamageable, float, bool> OnGlobalDamageDealt;
+	System.Action<IDamageable, float, bool> OnDamageDealt { get; }
 }
