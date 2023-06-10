@@ -1,6 +1,6 @@
 public interface IDamageable : ITargetable, IStatsHolder
 {
-	public float TakeDamage(IStatsHolder Attacker, float baseDamage)
+	public float TakeDamage(IDamageSource Attacker, float baseDamage)
 	{
 		Stat attackerDamage = Attacker.StatsHandler.GetStat<Stat>(StatID._Damage);
 		Stat targetArmor = StatsHandler.GetStat<Stat>(StatID._Armor);
