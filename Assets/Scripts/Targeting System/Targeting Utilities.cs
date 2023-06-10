@@ -16,11 +16,11 @@ public static class TargetingUtilities
 			Any(targetable2 => !AreAllies(targetable1, targetable2))).
 		ToArray();
 
-	public static void ApplyHitBehavior(this ITargetable[] targets, System.Action<ITargetable> onHitAction)
+	public static void ApplyHitBehavior(this ITargetable[] targets, object hitSource, System.Action<ITargetable> onHitAction)
 	{
 		foreach (ITargetable item in targets)
 		{
-			item.ApplyHitBehavior(onHitAction);
+			item.ApplyHitBehavior(hitSource, onHitAction);
 		}
 	}
 }

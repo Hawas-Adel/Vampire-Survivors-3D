@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class NPC : MonoBehaviour, IEntity
@@ -16,6 +17,10 @@ public class NPC : MonoBehaviour, IEntity
 	public StatsHandler StatsHandler { get; private set; }
 
 	string ITargetable.TeamID { get; } = nameof(NPC);
+	Action<object> ITargetable.OnHit { get; }
+
+	Action<IDamageSource, float> IDamageable.OnDamageTaken { get; }
+	Action<IDamageable, float> IDamageSource.OnDamageDealt { get; }
 
 	private void Awake()
 	{

@@ -1,1 +1,1 @@
-public interface IEntity : IDamageable { }
+public interface IEntity : IDamageSource, IDamageable { }

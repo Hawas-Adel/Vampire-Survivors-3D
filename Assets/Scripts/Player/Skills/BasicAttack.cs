@@ -23,15 +23,15 @@ public class BasicAttack : Skill
 		float range = caster.StatsHandler.GetStat<Stat>(StatID._Range).GetValue(Range);
 		Vector3 attackCenter = GetPointInCastDirection(caster, targetPoint, range / 2f);
 		attackCenter += AttackVerticalOffset * Vector3.up;
-		TargetingUtilities.GetTargetableEntities(Physics.OverlapSphere(attackCenter, range / 2f), caster).ApplyHitBehavior(targetable => DealDamage(caster, targetable));
+		TargetingUtilities.GetTargetableEntities(Physics.OverlapSphere(attackCenter, range / 2f), caster).ApplyHitBehavior(caster, targetable => DealDamage(caster, targetable));
 		SpawnVFX(attackCenter, range);
 	}
 
 	private void DealDamage(ICaster caster, ITargetable targetable)
 	{
-		if (targetable is IDamageable damageable)
+		if (targetable is IDamageable damageable && caster is IDamageSource damageSource)
 		{
-			damageable.TakeDamage(caster, Damage);
+			damageable.TakeDamage(damageSource, Damage);
 		}
 	}
 

@@ -2,11 +2,14 @@ public interface ITargetable
 {
 	public string TeamID { get; }
 
-	public void ApplyHitBehavior(System.Action<ITargetable> onHitAction)
+	System.Action<object> OnHit { get; }
+
+	public void ApplyHitBehavior(object hitSource, System.Action<ITargetable> onHitAction)
 	{
+		OnHit?.Invoke(hitSource);
 		if (this is ITargetableBehaviorOverride targetableBehaviorOverride)
 		{
-			targetableBehaviorOverride.OnOverrideHitBehavior(onHitAction);
+			targetableBehaviorOverride.OnOverrideHitBehavior(hitSource, onHitAction);
 		}
 		else
 		{
@@ -17,5 +20,5 @@ public interface ITargetable
 
 public interface ITargetableBehaviorOverride : ITargetable
 {
-	public void OnOverrideHitBehavior(System.Action<ITargetable> originalOnHitAction);
+	public void OnOverrideHitBehavior(object hitSource, System.Action<ITargetable> originalOnHitAction);
 }

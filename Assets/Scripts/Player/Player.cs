@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour, ICaster, IEntity
@@ -20,8 +21,12 @@ public class Player : MonoBehaviour, ICaster, IEntity
 	public StatsHandler StatsHandler { get; private set; }
 
 	string ITargetable.TeamID { get; } = nameof(Player);
+	Action<object> ITargetable.OnHit { get; }
 
 	Transform ICaster.Transform => transform;
+
+	Action<IDamageable, float> IDamageSource.OnDamageDealt { get; }
+	Action<IDamageSource, float> IDamageable.OnDamageTaken { get; }
 
 	private void Awake()
 	{
