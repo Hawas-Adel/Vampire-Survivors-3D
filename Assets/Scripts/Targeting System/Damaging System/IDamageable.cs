@@ -2,7 +2,8 @@ using UnityEngine;
 
 public interface IDamageable : ITargetable, IStatsHolder
 {
-	System.Action<IDamageSource, float, bool> OnDamageTaken { get; }
+	System.Action<IDamageSource, float, bool> OnDamageTaken { get; set; }
+	System.Action<IDamageSource> OnDeath { get; set; }
 
 	public float TakeDamage(IDamageSource Attacker, float baseDamage, float baseCriticalChance = 0f)
 	{
@@ -26,6 +27,16 @@ public interface IDamageable : ITargetable, IStatsHolder
 		OnDamageTaken?.Invoke(Attacker, finalDamage, isCriticalHit);
 		Attacker.OnDamageDealt?.Invoke(this, finalDamage, isCriticalHit);
 		IDamageSource.OnGlobalDamageDealt?.Invoke(Attacker, this, finalDamage, isCriticalHit);
+
+		if (targetHealth.CurrentValue == 0f)
+		{
+			foreach (Collider item in (this as Component).GetComponentsInChildren<Collider>())
+			{
+				item.enabled = false;
+			}
+
+			OnDeath?.Invoke(Attacker);
+		}
 
 		return finalDamage;
 	}

@@ -25,8 +25,9 @@ public class Player : MonoBehaviour, ICaster, IEntity
 
 	Transform ICaster.Transform => transform;
 
-	Action<IDamageable, float, bool> IDamageSource.OnDamageDealt { get; }
-	Action<IDamageSource, float, bool> IDamageable.OnDamageTaken { get; }
+	Action<IDamageable, float, bool> IDamageSource.OnDamageDealt { get; set; }
+	Action<IDamageSource> IDamageable.OnDeath { get; set; }
+	Action<IDamageSource, float, bool> IDamageable.OnDamageTaken { get; set; }
 
 	private void Awake()
 	{
