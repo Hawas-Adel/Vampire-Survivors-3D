@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Player : MonoBehaviour, ICaster, IEntity
+public class Player : SingletonMonoBehaviour<Player>, ICaster, IEntity
 {
 	[SerializeField, Min(0f), Header("Stats")] private float MaxHealth = 1000f;
 	[SerializeField, Min(0f)] private float HealthRegen = 5f;
@@ -29,8 +29,9 @@ public class Player : MonoBehaviour, ICaster, IEntity
 	Action<IDamageSource> IDamageable.OnDeath { get; set; }
 	Action<IDamageSource, float, bool> IDamageable.OnDamageTaken { get; set; }
 
-	private void Awake()
+	protected override void Awake()
 	{
+		base.Awake();
 		StatsHandler = new StatsHandler();
 		StatsHandler.Initialize(MaxHealth, HealthRegen, MaxMana, ManaRegen,
 			Strength, Dexterity, Intelligence,
