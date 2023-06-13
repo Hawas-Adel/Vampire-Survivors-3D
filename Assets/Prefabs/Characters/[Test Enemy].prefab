@@ -245,7 +245,9 @@ GameObject:
   - component: {fileID: 1749877080479887797}
   - component: {fileID: 2736450425020454404}
   - component: {fileID: 4744905236059082550}
-  m_Layer: 0
+  - component: {fileID: 4390740479510857801}
+  - component: {fileID: 5336782285018259229}
+  m_Layer: 6
   m_Name: '[Test Enemy]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -340,6 +342,32 @@ MonoBehaviour:
   - {fileID: 3508023251927316134}
   ComponentsToDisable:
   - {fileID: 2736450425020454404}
+--- !u!114 &4390740479510857801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4880233426290204094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d059cc95c8b7b934d93718773fc7684e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TickTimePeriod: 0.5
+  NavMeshAgent: {fileID: 5999831477511740474}
+--- !u!114 &5336782285018259229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4880233426290204094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfaba1cdb101efc4aa0bb97108fb147a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5104847770210558167
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,7 +380,7 @@ GameObject:
   - component: {fileID: 7939519952793026714}
   - component: {fileID: 441476168215905305}
   - component: {fileID: 3224649389937119236}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -460,7 +488,7 @@ GameObject:
   - component: {fileID: 181770074016540422}
   - component: {fileID: 2131685629170383177}
   - component: {fileID: 1003950106648887044}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
