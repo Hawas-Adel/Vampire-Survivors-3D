@@ -3,12 +3,14 @@ using UnityEngine;
 [RequireComponent(typeof(AIStateMachine))]
 public abstract class AIState : MonoBehaviour
 {
-	private AIStateMachine stateMachine;
+	protected AIStateMachine stateMachine;
 
 	private void Awake() => stateMachine = GetComponent<AIStateMachine>();
 
 	public abstract bool CanEnterState();
 	public abstract bool CanExitState();
+
+	public virtual float GetWeight() => 100f;
 
 	public virtual void OnEnterState(AIState previousState) { }
 	public virtual void WhileInState() { }
