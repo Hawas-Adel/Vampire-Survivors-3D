@@ -5,7 +5,7 @@ public abstract class AIState : MonoBehaviour
 {
 	protected AIStateMachine stateMachine;
 
-	private void Awake() => stateMachine = GetComponent<AIStateMachine>();
+	protected virtual void Awake() => stateMachine = GetComponent<AIStateMachine>();
 
 	public abstract bool CanEnterState();
 	public abstract bool CanExitState();
