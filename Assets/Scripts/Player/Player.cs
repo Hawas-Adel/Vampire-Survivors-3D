@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Player : SingletonMonoBehaviour<Player>, ICaster, IEntity
+public class Player : SingletonMonoBehavior<Player>, ICaster, IEntity
 {
 	[SerializeField, Min(0f), Header("Stats")] private float MaxHealth = 1000f;
 	[SerializeField, Min(0f)] private float HealthRegen = 5f;

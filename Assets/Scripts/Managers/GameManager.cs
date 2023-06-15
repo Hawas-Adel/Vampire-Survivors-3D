@@ -1,4 +1,4 @@
-public class GameManager : SingletonMonoBehaviour<GameManager>
+public class GameManager : SingletonMonoBehavior<GameManager>
 {
 	public GameInput GameInput { get; private set; }
 

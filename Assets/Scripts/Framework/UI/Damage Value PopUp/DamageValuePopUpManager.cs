@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DamageValuePopUpManager : SingletonMonoBehaviour<DamageValuePopUpManager>
+public class DamageValuePopUpManager : SingletonMonoBehavior<DamageValuePopUpManager>
 {
 	[SerializeField] private DamageValuePopUp DamageValuePopUpPrefab;
 
