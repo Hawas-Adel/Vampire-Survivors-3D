@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class NPC : MonoBehaviour, IEntity, ICaster
+public class NPC : TrackedCollectionMonoBehavior<NPC>, IEntity, ICaster
 {
 	[SerializeField, Min(0f), Header("Stats")] private float MaxHealth = 1000f;
 	[SerializeField, Min(0f)] private float HealthRegen = 5f;
