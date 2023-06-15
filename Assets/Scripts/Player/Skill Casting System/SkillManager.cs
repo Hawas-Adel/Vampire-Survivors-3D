@@ -16,6 +16,7 @@ public class SkillManager : MonoBehaviour
 	{
 		Caster = GetComponent<ICaster>();
 		playerAim = GetComponent<PlayerAim>();
+		Skills = Skills.Select(skill => skill.Clone()).ToList();
 	}
 
 	private void OnEnable() => GameManager.Instance.GameInput.OnPlayerSkillCastInput += TryCastSkill;

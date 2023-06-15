@@ -36,4 +36,11 @@ public abstract class Skill : ScriptableObject
 		var dir = GetCastDirection(caster, targetPoint);
 		return caster.Transform.position + (dir * distance);
 	}
+
+	public Skill Clone()
+	{
+		Skill newSkill = Instantiate(this);
+		newSkill.name = name;
+		return newSkill;
+	}
 }
