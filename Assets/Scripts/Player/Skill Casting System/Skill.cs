@@ -15,6 +15,7 @@ public abstract class Skill : ScriptableObject
 	public abstract (float normalizedDelay, System.Action<ICaster, Vector3> action)[] SkillCastCallbacks { get; }
 
 	public bool CanCast(ICaster caster) => HasAvailableCharge() && HasEnoughMana(caster);
+	public abstract bool CanAICast(ICaster caster);
 
 	public bool HasAvailableCharge() => chargeUsableTimes.Any(chargeTime => chargeTime.cooldownEndTimeStamp <= Time.time);
 	private bool HasEnoughMana(ICaster caster)

@@ -10,4 +10,6 @@ public class DebugSkill : Skill
 		(0.5f, (_, _) => Debug.Log($"MidWay Casting | {Time.time}")),
 		(1f, (_, _) => Debug.Log($"End Casting | {Time.time}")),
 	};
+
+	public override bool CanAICast(ICaster caster) => false;
 }

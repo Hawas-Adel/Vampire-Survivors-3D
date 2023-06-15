@@ -43,4 +43,6 @@ public class BasicAttack : Skill
 		sphereVisual.localScale = range * Vector3.one;
 		Destroy(sphereVisual.gameObject, 0.1f);
 	}
+
+	public override bool CanAICast(ICaster caster) => Vector3.Distance(caster.Transform.position, Player.Instance.transform.position) <= caster.StatsHandler.GetStat<Stat>(StatID._Range).GetValue(Range);
 }

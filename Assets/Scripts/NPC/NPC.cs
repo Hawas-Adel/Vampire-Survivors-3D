@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class NPC : MonoBehaviour, IEntity
+public class NPC : MonoBehaviour, IEntity, ICaster
 {
 	[SerializeField, Min(0f), Header("Stats")] private float MaxHealth = 1000f;
 	[SerializeField, Min(0f)] private float HealthRegen = 5f;
@@ -22,6 +22,8 @@ public class NPC : MonoBehaviour, IEntity
 	Action<IDamageSource, float, bool> IDamageable.OnDamageTaken { get; set; }
 	Action<IDamageSource> IDamageable.OnDeath { get; set; }
 	Action<IDamageable, float, bool> IDamageSource.OnDamageDealt { get; set; }
+
+	Transform ICaster.Transform => transform;
 
 	private void Awake()
 	{

@@ -248,6 +248,7 @@ GameObject:
   - component: {fileID: 4390740479510857801}
   - component: {fileID: 5336782285018259229}
   - component: {fileID: 1205041385095879929}
+  - component: {fileID: 2899140362100574188}
   m_Layer: 6
   m_Name: '[Test Enemy]'
   m_TagString: Untagged
@@ -385,6 +386,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ChaseStopDistance: 2.5
   PathUpdateTickTime: 0.25
+--- !u!114 &2899140362100574188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4880233426290204094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b105f6a0925eb2349bad776b8787dd0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Skill: {fileID: 11400000, guid: d9883eae155ba64409d385d355296ac9, type: 2}
 --- !u!1 &5104847770210558167
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
@@ -7,7 +8,7 @@ public class AIStateMachine : MonoBehaviour
 	[SerializeField, Min(0.1f)] private float TickTimePeriod = 0.5f;
 	[SerializeField] public NavMeshAgent NavMeshAgent;
 
-	public AIState CurrentState { get; private set; }
+	[ShowNativeProperty] public AIState CurrentState { get; private set; }
 	public event System.Action<AIState, AIState> OnStateChanged;
 
 	private AIState[] managedStates;
