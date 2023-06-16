@@ -2,6 +2,8 @@ using UnityEngine;
 
 public interface IDamageable : ITargetable, IStatsHolder
 {
+	public bool IsAlive { get; set; }
+
 	System.Action<IDamageSource, float, bool> OnDamageTaken { get; set; }
 	System.Action<IDamageSource> OnDeath { get; set; }
 
@@ -35,6 +37,7 @@ public interface IDamageable : ITargetable, IStatsHolder
 				item.enabled = false;
 			}
 
+			IsAlive = false;
 			OnDeath?.Invoke(Attacker);
 		}
 

@@ -315,6 +315,9 @@ MonoBehaviour:
   Armor: 0
   CriticalChance: 0
   LifeSteal: 0
+  <IsAlive>k__BackingField: 1
+  <ThreatLevel>k__BackingField: 1
+  <SpawnWeight>k__BackingField: 100
 --- !u!114 &2736450425020454404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,6 +347,7 @@ MonoBehaviour:
   - {fileID: 3508023251927316134}
   ComponentsToDisable:
   - {fileID: 2736450425020454404}
+  - {fileID: 4390740479510857801}
 --- !u!114 &4390740479510857801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,6 +403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Skill: {fileID: 11400000, guid: d9883eae155ba64409d385d355296ac9, type: 2}
+  Weight: 1000
 --- !u!1 &5104847770210558167
 GameObject:
   m_ObjectHideFlags: 0
