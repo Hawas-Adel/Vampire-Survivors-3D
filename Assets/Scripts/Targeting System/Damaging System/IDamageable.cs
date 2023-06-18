@@ -32,11 +32,7 @@ public interface IDamageable : ITargetable, IStatsHolder
 
 		if (targetHealth.CurrentValue == 0f)
 		{
-			foreach (Collider item in (this as Component).GetComponentsInChildren<Collider>())
-			{
-				item.enabled = false;
-			}
-
+			HandleDefaultComponentsBehaviorOnDeath();
 			IsAlive = false;
 			OnDeath?.Invoke(Attacker);
 		}
@@ -45,4 +41,14 @@ public interface IDamageable : ITargetable, IStatsHolder
 	}
 
 	float GetFinalDamage(float damage, float armor) => damage;//TODO : figure out how armor affects damage
+
+	void HandleDefaultComponentsBehaviorOnDeath()
+	{
+		foreach (Collider item in (this as Component).GetComponentsInChildren<Collider>())
+		{
+			item.enabled = false;
+		}
+
+		Object.Destroy((this as Component).GetComponent<Rigidbody>());
+	}
 }
