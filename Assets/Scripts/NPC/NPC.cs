@@ -34,8 +34,11 @@ public class NPC : TrackedCollectionMonoBehavior<NPC>, IEntity, ICaster, ISpawna
 	private void Awake()
 	{
 		StatsHandler = new StatsHandler();
-		StatsHandler.Initialize(MaxHealth, HealthRegen, MaxMana, ManaRegen,
-			0f, 0f, 0f,
-			MovementSpeed, Armor, CriticalChance, LifeSteal);
+		StatsHandler.InitializeHealthStats(MaxHealth, HealthRegen);
+		StatsHandler.InitializeManaStats(MaxMana, ManaRegen);
+		StatsHandler.InitializeSpecialStats(0f, 0f, 0f);
+		StatsHandler.InitializeSkillCastingRelatedStats();
+		StatsHandler.InitializeCriticalHitStats(CriticalChance);
+		StatsHandler.InitializeMiscStats(MovementSpeed, Armor, LifeSteal);
 	}
 }

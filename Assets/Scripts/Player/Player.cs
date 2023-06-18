@@ -35,8 +35,11 @@ public class Player : SingletonMonoBehavior<Player>, ICaster, IEntity
 	{
 		base.Awake();
 		StatsHandler = new StatsHandler();
-		StatsHandler.Initialize(MaxHealth, HealthRegen, MaxMana, ManaRegen,
-			Strength, Dexterity, Intelligence,
-			MovementSpeed, Armor, CriticalChance, LifeSteal);
+		StatsHandler.InitializeHealthStats(MaxHealth, HealthRegen);
+		StatsHandler.InitializeManaStats(MaxMana, ManaRegen);
+		StatsHandler.InitializeSpecialStats(Strength, Dexterity, Intelligence);
+		StatsHandler.InitializeSkillCastingRelatedStats();
+		StatsHandler.InitializeCriticalHitStats(CriticalChance);
+		StatsHandler.InitializeMiscStats(MovementSpeed, Armor, LifeSteal);
 	}
 }
