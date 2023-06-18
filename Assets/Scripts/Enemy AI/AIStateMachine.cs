@@ -19,7 +19,14 @@ public class AIStateMachine : MonoBehaviour
 	{
 		OnStateMachineTick();
 		InvokeRepeating(nameof(OnStateMachineTick), Random.Range(0f, TickTimePeriod), TickTimePeriod);
+
+		Stat movementSpeedStat = GetComponent<IStatsHolder>().StatsHandler.GetStat<Stat>(StatID._Movement_Speed);
+		movementSpeedStat.OnValueChanged += SyncMovementSpeedWithStat;
+		SyncMovementSpeedWithStat(movementSpeedStat);
 	}
+	private void OnDestroy() => GetComponent<IStatsHolder>().StatsHandler.GetStat<Stat>(StatID._Movement_Speed).OnValueChanged -= SyncMovementSpeedWithStat;
+
+	private void SyncMovementSpeedWithStat(Stat stat) => NavMeshAgent.speed = stat.GetValue();
 
 	private void OnStateMachineTick()
 	{
