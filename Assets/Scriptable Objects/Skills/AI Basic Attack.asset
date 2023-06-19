@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dfd59f4ea68de8e4b805787f9b6dcb83, type: 3}
-  m_Name: Basic Attack
+  m_Name: AI Basic Attack
   m_EditorClassIdentifier: 
   <CastDuration>k__BackingField: 1
   <Cooldown>k__BackingField: 1
-  <ManaCost>k__BackingField: 1
+  <ManaCost>k__BackingField: 0
   <MaxCharges>k__BackingField: 1
   <Range>k__BackingField: 2.5
-  <Damage>k__BackingField: 50
+  <Damage>k__BackingField: 1
   <AttackVerticalOffset>k__BackingField: 1.5

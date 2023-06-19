@@ -307,8 +307,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d50fd263f86aa714cbf146fbc2d372df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 200
-  HealthRegen: 5
+  MaxHealth: 100
+  HealthRegen: 2
   MaxMana: 100
   ManaRegen: 10
   MovementSpeed: 5
@@ -318,6 +318,7 @@ MonoBehaviour:
   <IsAlive>k__BackingField: 1
   <ThreatLevel>k__BackingField: 1
   <SpawnWeight>k__BackingField: 100
+  <EXPReward>k__BackingField: 100
 --- !u!114 &2736450425020454404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,7 +347,12 @@ MonoBehaviour:
   GameObjectsToDisable:
   - {fileID: 3508023251927316134}
   ComponentsToDisable:
+  - {fileID: 5999831477511740474}
+  ComponentsDestroy:
   - {fileID: 2736450425020454404}
+  - {fileID: 5336782285018259229}
+  - {fileID: 1205041385095879929}
+  - {fileID: 2899140362100574188}
   - {fileID: 4390740479510857801}
 --- !u!114 &4390740479510857801
 MonoBehaviour:
@@ -402,7 +408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b105f6a0925eb2349bad776b8787dd0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Skill: {fileID: 11400000, guid: d9883eae155ba64409d385d355296ac9, type: 2}
+  Skill: {fileID: 11400000, guid: 524e4f996e8d3eb4c929c7e918a6facf, type: 2}
   Weight: 1000
 --- !u!1 &5104847770210558167
 GameObject:

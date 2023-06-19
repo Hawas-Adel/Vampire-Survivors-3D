@@ -54,8 +54,8 @@ public class SkillManager : MonoBehaviour
 			CurrentCastingCoroutines.Add(this.DelayedCallBack(() => action.Invoke(Caster, playerAim.pointerWorldPosition), normalizedDelay * castDuration));
 		}
 
-		this.DelayedCallBack(ResetSelf, castDuration);
-		this.DelayedCallBack(() => skill.StartChargeCooldown(Caster), castDuration);
+		CurrentCastingCoroutines.Add(this.DelayedCallBack(() => skill.StartChargeCooldown(Caster), castDuration));
+		CurrentCastingCoroutines.Add(this.DelayedCallBack(ResetSelf, castDuration));
 	}
 
 	private void ResetSelf()

@@ -33,8 +33,8 @@ public class AICastSkill : AIState
 			CurrentCastingCoroutines.Add(this.DelayedCallBack(() => action.Invoke(caster, Player.Instance.transform.position), normalizedDelay * castDuration));
 		}
 
-		this.DelayedCallBack(ResetSelfAndExitState, castDuration);
-		this.DelayedCallBack(() => Skill.StartChargeCooldown(caster), castDuration);
+		CurrentCastingCoroutines.Add(this.DelayedCallBack(ResetSelfAndExitState, castDuration));
+		CurrentCastingCoroutines.Add(this.DelayedCallBack(() => Skill.StartChargeCooldown(caster), castDuration));
 	}
 
 	private void ResetSelfAndExitState()
