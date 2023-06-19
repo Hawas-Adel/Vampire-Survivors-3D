@@ -25,6 +25,7 @@ public class NPC : TrackedCollectionMonoBehavior<NPC>, IEntity, ICaster, ISpawna
 	Action<IDamageSource, float, bool> IDamageable.OnDamageTaken { get; set; }
 	Action<IDamageSource> IDamageable.OnDeath { get; set; }
 	Action<IDamageable, float, bool> IDamageSource.OnDamageDealt { get; set; }
+	Action<IDamageable> IDamageSource.OnKill { get; set; }
 
 	Transform ICaster.Transform => transform;
 

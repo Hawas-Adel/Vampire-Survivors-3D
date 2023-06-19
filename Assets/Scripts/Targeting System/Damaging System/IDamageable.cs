@@ -35,6 +35,7 @@ public interface IDamageable : ITargetable, IStatsHolder
 			HandleDefaultComponentsBehaviorOnDeath();
 			IsAlive = false;
 			OnDeath?.Invoke(Attacker);
+			Attacker.OnKill?.Invoke(this);
 		}
 
 		return finalDamage;

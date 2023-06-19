@@ -30,6 +30,7 @@ public class Player : SingletonMonoBehavior<Player>, ICaster, IEntity
 	Action<IDamageable, float, bool> IDamageSource.OnDamageDealt { get; set; }
 	Action<IDamageSource> IDamageable.OnDeath { get; set; }
 	Action<IDamageSource, float, bool> IDamageable.OnDamageTaken { get; set; }
+	Action<IDamageable> IDamageSource.OnKill { get; set; }
 
 	protected override void Awake()
 	{
