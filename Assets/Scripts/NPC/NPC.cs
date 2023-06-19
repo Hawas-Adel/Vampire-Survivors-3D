@@ -2,7 +2,7 @@ using NaughtyAttributes;
 using System;
 using UnityEngine;
 
-public class NPC : TrackedCollectionMonoBehavior<NPC>, IEntity, ICaster, ISpawnableEnemy
+public class NPC : TrackedCollectionMonoBehavior<NPC>, IEntity, ICaster, ISpawnableEnemy, IEXP_Source
 {
 	[SerializeField, Min(0f), Foldout("Stats")] private float MaxHealth = 1000f;
 	[SerializeField, Min(0f), Foldout("Stats")] private float HealthRegen = 5f;
@@ -29,8 +29,10 @@ public class NPC : TrackedCollectionMonoBehavior<NPC>, IEntity, ICaster, ISpawna
 
 	Transform ICaster.Transform => transform;
 
-	[field: SerializeField, Min(0f)] public float ThreatLevel { get; private set; } = 1f;
+	[field: SerializeField, Min(0f), Header("Spawn")] public float ThreatLevel { get; private set; } = 1f;
 	[field: SerializeField, Min(0f)] public float SpawnWeight { get; private set; } = 100f;
+
+	[field: SerializeField, Min(0f), Header("EXP")] public int EXPReward { get; private set; } = 100;
 
 	private void Awake()
 	{

@@ -2,7 +2,7 @@ using NaughtyAttributes;
 using System;
 using UnityEngine;
 
-public class Player : SingletonMonoBehavior<Player>, ICaster, IEntity
+public class Player : SingletonMonoBehavior<Player>, ICaster, IEntity, ILeveledEntity
 {
 	[SerializeField, Min(0f), Foldout("Stats")] private float MaxHealth = 1000f;
 	[SerializeField, Min(0f), Foldout("Stats")] private float HealthRegen = 5f;
@@ -32,6 +32,10 @@ public class Player : SingletonMonoBehavior<Player>, ICaster, IEntity
 	Action<IDamageSource, float, bool> IDamageable.OnDamageTaken { get; set; }
 	Action<IDamageable> IDamageSource.OnKill { get; set; }
 
+	[ShowNativeProperty] int ILeveledEntity.CurrentEXP { get; set; }
+	[ShowNativeProperty] int ILeveledEntity.CurrentLevel { get; set; }
+	Action ILeveledEntity.OnLevelUp { get; set; }
+
 	protected override void Awake()
 	{
 		base.Awake();
@@ -42,5 +46,7 @@ public class Player : SingletonMonoBehavior<Player>, ICaster, IEntity
 		StatsHandler.InitializeSkillCastingRelatedStats();
 		StatsHandler.InitializeCriticalHitStats(CriticalChance);
 		StatsHandler.InitializeMiscStats(MovementSpeed, Armor, LifeSteal);
+
+		(this as ILeveledEntity).Initialize();
 	}
 }
