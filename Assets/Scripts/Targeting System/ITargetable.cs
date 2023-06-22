@@ -13,7 +13,7 @@ public interface ITargetable
 		}
 		else
 		{
-			onHitAction.Invoke(this);
+			onHitAction?.Invoke(this);
 		}
 	}
 }

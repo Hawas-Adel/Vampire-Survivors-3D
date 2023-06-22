@@ -23,7 +23,13 @@ public class BasicAttack : Skill
 		float range = caster.StatsHandler.GetStat<Stat>(StatID._Range).GetValue(Range);
 		Vector3 attackCenter = GetPointInCastDirection(caster, targetPoint, range / 2f);
 		attackCenter += AttackVerticalOffset * Vector3.up;
-		TargetingUtilities.GetTargetableEntities(Physics.OverlapSphere(attackCenter, range / 2f), caster).ApplyHitBehavior(caster, targetable => DealDamage(caster, targetable));
+
+		AOE aoe = AOE.Create(attackCenter, caster.Transform.rotation, "Basic Attack AOE");
+		aoe.SetIgnoredTargets(caster);
+		aoe.IncludeAOEShape(new AOE_Shape_Sphere(Vector3.zero, range / 2f));
+		aoe.OnEnter += targetable => DealDamage(caster, targetable);
+		aoe.Activate();
+
 		SpawnVFX(attackCenter, range);
 	}
 

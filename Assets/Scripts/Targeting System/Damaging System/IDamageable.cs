@@ -24,7 +24,7 @@ public interface IDamageable : ITargetable, IStatsHolder
 		}
 
 		targetHealth.ModifyCurrentValue(-finalDamage);
-		UnityEngine.Debug.Log($"{Attacker} dealt {finalDamage} to {this} | Health Remaining = {targetHealth.CurrentValue}", this as UnityEngine.Object);
+		UnityEngine.Debug.Log($"{Attacker} dealt {finalDamage} damage to {this} | Health Remaining = {targetHealth.CurrentValue}", this as UnityEngine.Object);
 
 		OnDamageTaken?.Invoke(Attacker, finalDamage, isCriticalHit);
 		Attacker.OnDamageDealt?.Invoke(this, finalDamage, isCriticalHit);
