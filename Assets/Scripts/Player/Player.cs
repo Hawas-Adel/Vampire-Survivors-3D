@@ -1,8 +1,9 @@
 using NaughtyAttributes;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : SingletonMonoBehavior<Player>, ICaster, IEntity, ILeveledEntity
+public class Player : SingletonMonoBehavior<Player>, ICaster, IEntity, ILeveledEntity, IUpgradeHolder
 {
 	[SerializeField, Min(0f), Foldout("Stats")] private float MaxHealth = 1000f;
 	[SerializeField, Min(0f), Foldout("Stats")] private float HealthRegen = 5f;
@@ -35,6 +36,7 @@ public class Player : SingletonMonoBehavior<Player>, ICaster, IEntity, ILeveledE
 	[ShowNativeProperty] int ILeveledEntity.CurrentEXP { get; set; }
 	[ShowNativeProperty] int ILeveledEntity.CurrentLevel { get; set; }
 	Action ILeveledEntity.OnLevelUp { get; set; }
+	List<Upgrade> IUpgradeHolder.ActiveUpgrades { get; set; } = new();
 
 	protected override void Awake()
 	{
