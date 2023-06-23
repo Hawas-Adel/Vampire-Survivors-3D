@@ -2,6 +2,7 @@ using NaughtyAttributes;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : SingletonMonoBehavior<Player>, ICaster, IEntity, ILeveledEntity, IUpgradeHolder
 {
@@ -21,11 +22,12 @@ public class Player : SingletonMonoBehavior<Player>, ICaster, IEntity, ILeveledE
 	[SerializeField, Min(0f), Foldout("Stats")] private float LifeSteal;
 
 	public StatsHandler StatsHandler { get; private set; }
-
 	string ITargetable.TeamID { get; } = nameof(Player);
 	Action<object> ITargetable.OnHit { get; }
 
 	Transform ICaster.Transform => transform;
+
+	public UnityAction<Vector3> OnMove { get; set; }
 
 	bool IDamageable.IsAlive { get; set; } = true;
 	Action<IDamageable, float, bool> IDamageSource.OnDamageDealt { get; set; }
@@ -38,6 +40,8 @@ public class Player : SingletonMonoBehavior<Player>, ICaster, IEntity, ILeveledE
 	Action ILeveledEntity.OnLevelUp { get; set; }
 	List<Upgrade> IUpgradeHolder.ActiveUpgrades { get; set; } = new();
 
+	private new Rigidbody rigidbody;
+
 	protected override void Awake()
 	{
 		base.Awake();
@@ -49,6 +53,10 @@ public class Player : SingletonMonoBehavior<Player>, ICaster, IEntity, ILeveledE
 		StatsHandler.InitializeCriticalHitStats(CriticalChance);
 		StatsHandler.InitializeMiscStats(MovementSpeed, Armor, LifeSteal);
 
+		rigidbody = GetComponent<Rigidbody>();
+
 		(this as ILeveledEntity).Initialize();
 	}
+
+	private void Update() => OnMove?.Invoke(rigidbody.velocity);
 }

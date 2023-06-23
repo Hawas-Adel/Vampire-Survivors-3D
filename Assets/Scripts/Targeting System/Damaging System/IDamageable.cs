@@ -50,6 +50,9 @@ public interface IDamageable : ITargetable, IStatsHolder
 			item.enabled = false;
 		}
 
-		Object.Destroy((this as Component).GetComponent<Rigidbody>());
+		if ((this as Component).TryGetComponent(out Rigidbody rigidbody))
+		{
+			rigidbody.isKinematic = true;
+		}
 	}
 }

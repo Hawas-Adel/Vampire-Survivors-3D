@@ -1,6 +1,8 @@
 using NaughtyAttributes;
 using System;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class NPC : TrackedCollectionMonoBehavior<NPC>, IEntity, ICaster, ISpawnableEnemy, IEXP_Source
 {
@@ -14,6 +16,8 @@ public class NPC : TrackedCollectionMonoBehavior<NPC>, IEntity, ICaster, ISpawna
 	[SerializeField, Min(0f), Foldout("Stats")] private float Armor;
 	[SerializeField, Min(0f), Foldout("Stats")] private float CriticalChance;
 	[SerializeField, Min(0f), Foldout("Stats")] private float LifeSteal;
+
+	private NavMeshAgent navMeshAgent;
 
 	public StatsHandler StatsHandler { get; private set; }
 
@@ -29,6 +33,8 @@ public class NPC : TrackedCollectionMonoBehavior<NPC>, IEntity, ICaster, ISpawna
 
 	Transform ICaster.Transform => transform;
 
+	public UnityAction<Vector3> OnMove { get; set; }
+
 	[field: SerializeField, Min(0f), Header("Spawn")] public float ThreatLevel { get; private set; } = 1f;
 	[field: SerializeField, Min(0f)] public float SpawnWeight { get; private set; } = 100f;
 
@@ -43,5 +49,9 @@ public class NPC : TrackedCollectionMonoBehavior<NPC>, IEntity, ICaster, ISpawna
 		StatsHandler.InitializeSkillCastingRelatedStats();
 		StatsHandler.InitializeCriticalHitStats(CriticalChance);
 		StatsHandler.InitializeMiscStats(MovementSpeed, Armor, LifeSteal);
+
+		navMeshAgent = GetComponent<NavMeshAgent>();
 	}
+
+	private void Update() => OnMove?.Invoke(navMeshAgent.velocity);
 }
