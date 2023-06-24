@@ -14,6 +14,7 @@ public class BasicAttack : Skill
 	{
 		SkillCastCallbacks = new (float normalizedDelay, Action<ICaster, Vector3> action)[]
 		{
+			(0f, PerformBasicAttackAnimation),
 			(0.5f, PerformAttack),
 		};
 	}
@@ -24,21 +25,15 @@ public class BasicAttack : Skill
 		Vector3 attackCenter = GetPointInCastDirection(caster, targetPoint, range / 2f);
 		attackCenter += AttackVerticalOffset * Vector3.up;
 
+		float damage = caster.StatsHandler.GetStat<Stat>(StatID._Damage).GetValue(Damage);
+
 		AOE aoe = AOE.Create(attackCenter, caster.Transform.rotation, "Basic Attack AOE");
 		aoe.SetIgnoredTargets(caster);
 		aoe.IncludeAOEShape(new AOE_Shape_Sphere(Vector3.zero, range / 2f));
-		aoe.OnEnter += targetable => DealDamage(caster, targetable);
+		aoe.OnEnter += targetable => DealDamage(caster, targetable, damage);
 		aoe.Activate();
 
 		SpawnVFX(attackCenter, range);
-	}
-
-	private void DealDamage(ICaster caster, ITargetable targetable)
-	{
-		if (targetable is IDamageable damageable && caster is IDamageSource damageSource)
-		{
-			damageable.TakeDamage(damageSource, Damage);
-		}
 	}
 
 	private void SpawnVFX(Vector3 attackCenter, float range)

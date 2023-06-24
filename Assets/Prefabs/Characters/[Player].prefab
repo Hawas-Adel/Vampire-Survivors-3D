@@ -457,6 +457,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8557596830312222683}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ae927be398947504c8df28c302efd6cf,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5597834805212854962}
   m_SourcePrefab: {fileID: 100100000, guid: ae927be398947504c8df28c302efd6cf, type: 3}
 --- !u!95 &1310653819927343014 stripped
 Animator:
@@ -492,6 +496,21 @@ MonoBehaviour:
   VelocityX: -289070382
   VelocityZ: 13321214
   Death: 646380074
+--- !u!114 &5597834805212854962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5736350953050386278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72cd0f6a7a7eb334e86201b9be39d945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 1310653819927343014}
+  AnimationLayerIndex: 1
+  BasicAttackTrigger: -1155614474
 --- !u!1001 &8276446909353936903
 PrefabInstance:
   m_ObjectHideFlags: 0

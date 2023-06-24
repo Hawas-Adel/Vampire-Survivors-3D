@@ -44,4 +44,23 @@ public abstract class Skill : ScriptableObject
 		newSkill.name = name;
 		return newSkill;
 	}
+
+	protected void PerformBasicAttackAnimation(ICaster caster, Vector3 _)
+	{
+		EntityAttackAnimator attackAnimator = caster.Transform.GetComponentInChildren<EntityAttackAnimator>();
+		if (!attackAnimator)
+		{
+			return;
+		}
+
+		attackAnimator.StartBasicAttackAnimation();
+	}
+
+	protected void DealDamage(ICaster caster, ITargetable targetable, float damage)
+	{
+		if (targetable is IDamageable damageable && caster is IDamageSource damageSource)
+		{
+			damageable.TakeDamage(damageSource, damage);
+		}
+	}
 }
