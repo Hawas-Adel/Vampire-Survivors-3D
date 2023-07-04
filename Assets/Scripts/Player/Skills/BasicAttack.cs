@@ -27,7 +27,7 @@ public class BasicAttack : Skill
 
 		float damage = caster.StatsHandler.GetStat<Stat>(StatID._Damage).GetValue(Damage);
 
-		AOE aoe = AOE.Create(attackCenter, caster.Transform.rotation, "Basic Attack AOE");
+		AOE aoe = AOE.Create(attackCenter, caster.Transform.rotation, $"{caster}'s Basic Attack AOE");
 		aoe.SetIgnoredTargets(caster);
 		aoe.IncludeAOEShape(new AOE_Shape_Sphere(Vector3.zero, range / 2f));
 		aoe.OnEnter += targetable => DealDamage(caster, targetable, damage);

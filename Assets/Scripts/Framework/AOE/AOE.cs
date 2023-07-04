@@ -16,7 +16,6 @@ public partial class AOE : MonoBehaviour
 	private HashSet<ITargetable> TargetsInsideAOE = new();
 	private ITargetable[] IgnoredTargets = System.Array.Empty<ITargetable>();
 
-
 	public event System.Action<ITargetable> OnEnter;
 	public event System.Action<ITargetable> OnExit;
 
@@ -26,19 +25,19 @@ public partial class AOE : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		ITargetable[] currentTargetables = TargetingUtilities.GetTargetableEntities(GetAllColliderInAOE(), IgnoredTargets);
+		ITargetable[] currentTargets = TargetingUtilities.GetTargetableEntities(GetAllColliderInAOE(), IgnoredTargets);
 
-		foreach (var item in currentTargetables.Except(TargetsInsideAOE).ToArray())
+		foreach (var item in currentTargets.Except(TargetsInsideAOE).ToArray())
 		{
 			item.ApplyHitBehavior(this, OnEnter);
 		}
 
-		foreach (var item in TargetsInsideAOE.Except(currentTargetables).ToArray())
+		foreach (var item in TargetsInsideAOE.Except(currentTargets).ToArray())
 		{
 			OnExit?.Invoke(item);
 		}
 
-		TargetsInsideAOE = currentTargetables.ToHashSet();
+		TargetsInsideAOE = currentTargets.ToHashSet();
 	}
 
 	private void OnEnable() => FixedUpdate();
