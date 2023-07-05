@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class Skill : ScriptableObject
 {
@@ -12,7 +13,7 @@ public abstract class Skill : ScriptableObject
 
 	private void OnEnable() => chargeUsableTimes = new (float cooldownStartTimeStamp, float cooldownEndTimeStamp)[MaxCharges];
 
-	public abstract (float normalizedDelay, System.Action<ICaster, Vector3> action)[] SkillCastCallbacks { get; }
+	public abstract (float normalizedDelay, UnityAction<ICaster, Vector3> action)[] SkillCastCallbacks { get; }
 
 	public bool CanCast(ICaster caster) => HasAvailableCharge() && HasEnoughMana(caster);
 	public abstract bool CanAICast(ICaster caster);

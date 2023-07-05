@@ -1,5 +1,5 @@
-using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 [CreateAssetMenu(menuName = "Skills/Basic Attack")]
 public class BasicAttack : Skill
@@ -8,11 +8,11 @@ public class BasicAttack : Skill
 	[field: SerializeField, Min(0f)] public float Damage { get; private set; } = 20f;
 	[field: SerializeField, Min(0f)] public float AttackVerticalOffset { get; private set; } = 1.5f;
 
-	public override (float normalizedDelay, Action<ICaster, Vector3> action)[] SkillCastCallbacks { get; }
+	public override (float normalizedDelay, UnityAction<ICaster, Vector3> action)[] SkillCastCallbacks { get; }
 
 	public BasicAttack() : base()
 	{
-		SkillCastCallbacks = new (float normalizedDelay, Action<ICaster, Vector3> action)[]
+		SkillCastCallbacks = new (float normalizedDelay, UnityAction<ICaster, Vector3> action)[]
 		{
 			(0f, PerformBasicAttackAnimation),
 			(0.5f, PerformAttack),
