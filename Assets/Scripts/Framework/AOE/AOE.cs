@@ -26,7 +26,7 @@ public partial class AOE : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		ITargetable[] currentTargets = TargetingUtilities.GetTargetableEntities(GetAllColliderInAOE(), IgnoredTargets);
+		ITargetable[] currentTargets = TargetingUtilities.GetTargets(GetAllColliderInAOE(), IgnoredTargets);
 
 		foreach (var item in currentTargets.Except(TargetsInsideAOE).ToArray())
 		{

@@ -220,6 +220,7 @@ MonoBehaviour:
   Skills:
   - {fileID: 11400000, guid: a6d53dead668938429dfe65c1e55235e, type: 2}
   - {fileID: 11400000, guid: d9883eae155ba64409d385d355296ac9, type: 2}
+  - {fileID: 11400000, guid: 9eb461c4e901c75439fcb856d21f5f1e, type: 2}
 --- !u!114 &8562295273765499305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -510,6 +511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Animator: {fileID: 1310653819927343014}
   AnimationLayerIndex: 1
+  AnimationSpeed: 0
   BasicAttackTrigger: -1155614474
 --- !u!1001 &8276446909353936903
 PrefabInstance:

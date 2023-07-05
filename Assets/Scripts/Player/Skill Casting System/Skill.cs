@@ -57,9 +57,9 @@ public abstract class Skill : ScriptableObject
 		attackAnimator.StartBasicAttackAnimation();
 	}
 
-	protected void DealDamage(ICaster caster, ITargetable targetable, float damage)
+	protected void DealDamage(ICaster caster, ITargetable target, float damage)
 	{
-		if (targetable is IDamageable damageable && caster is IDamageSource damageSource)
+		if (target is IDamageable damageable && caster is IDamageSource damageSource)
 		{
 			damageable.TakeDamage(damageSource, damage);
 		}

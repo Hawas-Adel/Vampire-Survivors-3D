@@ -6,11 +6,11 @@ public static class TargetingUtilities
 {
 	public static bool AreAllies(ITargetable entity1, ITargetable entity2) => entity1.TeamID == entity2.TeamID;
 
-	private static ITargetable GetTarget(Collider collider) => collider.GetComponentInParent<ITargetable>();
+	public static ITargetable GetTarget(Collider collider) => collider.GetComponentInParent<ITargetable>();
 	public static ITargetable GetTarget(Collider collider, params ITargetable[] ignoredTargets)
 	{
 		ITargetable target = GetTarget(collider);
-		if (ignoredTargets.Any(ignoredTarget => AreAllies(target, ignoredTarget)))
+		if (ShouldIgnoreTarget(target, ignoredTargets))
 		{
 			return null;
 		}
@@ -18,15 +18,16 @@ public static class TargetingUtilities
 		return target;
 	}
 
+	public static bool ShouldIgnoreTarget(ITargetable target, params ITargetable[] ignoredTargets) => ignoredTargets.Any(ignoredTarget => AreAllies(target, ignoredTarget));
+
 	private static ITargetable[] GetTargets(Collider[] colliders) => colliders.
-		Select(collider => collider.GetComponentInParent<ITargetable>()).
+		Select(collider => GetTarget(collider)).
 		Distinct().
 		Where(targetable => targetable is not null).
 		ToArray();
 
-	public static ITargetable[] GetTargetableEntities(Collider[] colliders, params ITargetable[] IgnoredTargetable) => GetTargets(colliders).
-		Where(targetable1 => IgnoredTargetable.
-			Any(targetable2 => !AreAllies(targetable1, targetable2))).
+	public static ITargetable[] GetTargets(Collider[] colliders, params ITargetable[] IgnoredTargetable) => GetTargets(colliders).
+		Where(targetable1 => !ShouldIgnoreTarget(targetable1, IgnoredTargetable)).
 		ToArray();
 
 	public static void ApplyHitBehavior(this ITargetable[] targets, object hitSource, UnityAction<ITargetable> onHitAction)
