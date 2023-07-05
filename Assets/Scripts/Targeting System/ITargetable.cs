@@ -1,10 +1,12 @@
+using UnityEngine.Events;
+
 public interface ITargetable
 {
 	public string TeamID { get; }
 
 	System.Action<object> OnHit { get; }
 
-	public void ApplyHitBehavior(object hitSource, System.Action<ITargetable> onHitAction)
+	public void ApplyHitBehavior(object hitSource, UnityAction<ITargetable> onHitAction)
 	{
 		OnHit?.Invoke(hitSource);
 		if (this is ITargetableBehaviorOverride targetableBehaviorOverride)
@@ -20,5 +22,5 @@ public interface ITargetable
 
 public interface ITargetableBehaviorOverride : ITargetable
 {
-	public void OnOverrideHitBehavior(object hitSource, System.Action<ITargetable> originalOnHitAction);
+	public void OnOverrideHitBehavior(object hitSource, UnityAction<ITargetable> originalOnHitAction);
 }

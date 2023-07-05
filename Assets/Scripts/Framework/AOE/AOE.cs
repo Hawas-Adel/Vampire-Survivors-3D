@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public partial class AOE : MonoBehaviour
 {
@@ -16,8 +17,8 @@ public partial class AOE : MonoBehaviour
 	private HashSet<ITargetable> TargetsInsideAOE = new();
 	private ITargetable[] IgnoredTargets = System.Array.Empty<ITargetable>();
 
-	public event System.Action<ITargetable> OnEnter;
-	public event System.Action<ITargetable> OnExit;
+	public event UnityAction<ITargetable> OnEnter;
+	public event UnityAction<ITargetable> OnExit;
 
 	public void SetIgnoredTargets(params ITargetable[] ignoredTargets) => IgnoredTargets = ignoredTargets;
 

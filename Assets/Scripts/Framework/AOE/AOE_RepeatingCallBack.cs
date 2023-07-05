@@ -1,15 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public partial class AOE : MonoBehaviour
 {
 	private class AOERepeatingCallBackData
 	{
-		private System.Action<ITargetable> OnTick;
+		private UnityAction<ITargetable> OnTick;
 		private float TickDuration;
 		private float LastTickTimeStamp;
 
-		public AOERepeatingCallBackData(System.Action<ITargetable> onTick, float tickDuration)
+		public AOERepeatingCallBackData(UnityAction<ITargetable> onTick, float tickDuration)
 		{
 			OnTick = onTick;
 			TickDuration = tickDuration;
@@ -30,7 +31,7 @@ public partial class AOE : MonoBehaviour
 
 	private List<AOERepeatingCallBackData> repeatingCallBacks = new();
 
-	public void AddRepeatingCallback(System.Action<ITargetable> onTick, float TickDuration) => repeatingCallBacks.Add(new(onTick, TickDuration));
+	public void AddRepeatingCallback(UnityAction<ITargetable> onTick, float TickDuration) => repeatingCallBacks.Add(new(onTick, TickDuration));
 
 	private void Update()
 	{
