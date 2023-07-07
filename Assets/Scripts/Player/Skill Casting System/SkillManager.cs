@@ -47,6 +47,7 @@ public class SkillManager : MonoBehaviour
 		playerAim.enabled = false;
 		playerAim.SetAimRotation(Quaternion.LookRotation(playerAim.pointerWorldPosition - playerAim.transform.position, playerAim.transform.up));
 
+		skill.PreCast(Caster);
 		Caster.StatsHandler.GetStat<StatWithCurrentValue>(StatID._Mana).ModifyCurrentValue(-Caster.StatsHandler.GetStat<Stat>(StatID._Mana_Cost).GetValue(skill.ManaCost));
 		float castDuration = 1f / Caster.StatsHandler.GetStat<Stat>(StatID._Casting_Speed).GetValue(1f / skill.CastDuration);
 		foreach (var (normalizedDelay, action) in skill.SkillCastCallbacks)

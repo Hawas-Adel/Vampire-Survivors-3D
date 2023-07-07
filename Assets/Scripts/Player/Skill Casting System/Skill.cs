@@ -18,6 +18,8 @@ public abstract class Skill : ScriptableObject
 	public bool CanCast(ICaster caster) => HasAvailableCharge() && HasEnoughMana(caster);
 	public abstract bool CanAICast(ICaster caster);
 
+	public virtual void PreCast(ICaster caster) { }
+
 	public bool HasAvailableCharge() => chargeUsableTimes.Any(chargeTime => chargeTime.cooldownEndTimeStamp <= Time.time);
 	private bool HasEnoughMana(ICaster caster)
 	{
