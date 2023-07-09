@@ -18,7 +18,8 @@ MonoBehaviour:
   <MaxCharges>k__BackingField: 1
   <Damage>k__BackingField: 20
   <AttackVerticalOffset>k__BackingField: 1.5
-  <Projectile>k__BackingField: {fileID: 0}
+  <Projectile>k__BackingField: {fileID: 8802878214922842937, guid: 151bccae096403143b790cffb1267d65,
+    type: 3}
   <ProjectileSpeed>k__BackingField: 8
   <ProjectileCount>k__BackingField: 1
   <ProjectileFiringArcAngle>k__BackingField: 20
