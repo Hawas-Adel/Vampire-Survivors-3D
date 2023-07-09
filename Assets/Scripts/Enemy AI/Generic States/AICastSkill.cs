@@ -26,6 +26,7 @@ public class AICastSkill : AIState
 
 	private void CastSkill()
 	{
+		Skill.PreCast(caster);
 		caster.StatsHandler.GetStat<StatWithCurrentValue>(StatID._Mana).ModifyCurrentValue(-caster.StatsHandler.GetStat<Stat>(StatID._Mana_Cost).GetValue(Skill.ManaCost));
 		float castDuration = 1f / caster.StatsHandler.GetStat<Stat>(StatID._Casting_Speed).GetValue(1f / Skill.CastDuration);
 		foreach (var (normalizedDelay, action) in Skill.SkillCastCallbacks)
